@@ -22,7 +22,13 @@ To start the docker mysql database you should run the following code in the term
 *note:* Make sure your docker is running before you run the command.
 
 ```bash
-docker run --name library-api -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=library_db -d dhi.io/mysql:8 mysqld
+docker run --name library-api -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=library_db -p 3306:3306 -d mysql:8
+```
+
+Then run this command to confirm the docker container is running
+
+```bash
+docker ps
 ```
 
 ---
@@ -168,8 +174,14 @@ library-api/
 
 # How to run
 
-To run the project you should run the following code in the terminal to install the required libraries needed for the project.  
+To run the project you should run the following code in the terminal to install the required libraries needed for the project.
 **Note:** make sure you are in the project's folder.
+
+```bash
+pip install -r requirements.txt
+```
+
+Now run the project by running the following command in the terminal:
 
 ```bash
 uvicorn main:app
@@ -178,7 +190,7 @@ uvicorn main:app
 Then go to the following page in your browser:
 
 ```text
-https://127.0.0.1/docs
+https://127.0.0.1:8000/docs
 ```
 
 Now you are all set.
